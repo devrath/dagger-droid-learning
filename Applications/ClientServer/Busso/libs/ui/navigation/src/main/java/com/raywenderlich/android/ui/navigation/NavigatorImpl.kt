@@ -48,8 +48,8 @@ class NavigatorImpl(private val activity: Activity) : Navigator {
       }
       is FragmentDestination<*> -> {
         val builder = (activity as AppCompatActivity).supportFragmentManager
-            .beginTransaction()
-            .replace(destination.anchorId, destination.fragment)
+          .beginTransaction()
+          .replace(destination.anchorId, destination.fragment)
         destination.withBackStack?.run {
           builder.addToBackStack(this)
         }
@@ -57,8 +57,8 @@ class NavigatorImpl(private val activity: Activity) : Navigator {
       }
       is FragmentFactoryDestination<*> -> {
         val builder = (activity as AppCompatActivity).supportFragmentManager
-            .beginTransaction()
-            .replace(destination.anchorId, destination.fragmentFactory(destination.bundle))
+          .beginTransaction()
+          .replace(destination.anchorId, destination.fragmentFactory(destination.bundle))
         destination.withBackStack?.run {
           builder.addToBackStack(this)
         }
@@ -66,8 +66,8 @@ class NavigatorImpl(private val activity: Activity) : Navigator {
       }
       is ActivityBackDestination -> activity.finish()
       is FragmentBackDestination -> (activity as AppCompatActivity)
-          .supportFragmentManager
-          .popBackStack()
+        .supportFragmentManager
+        .popBackStack()
     }
   }
 }
