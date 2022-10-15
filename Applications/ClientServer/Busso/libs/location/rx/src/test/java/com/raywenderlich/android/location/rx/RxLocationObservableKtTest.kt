@@ -43,7 +43,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 
 @RunWith(
-  RobolectricTestRunner::class
+    RobolectricTestRunner::class
 )
 class RxLocationObservableKtTest {
 
@@ -52,6 +52,29 @@ class RxLocationObservableKtTest {
   @Before
   fun setUp() {
     context = RuntimeEnvironment.systemContext
+  }
+
+  @Test
+  fun mapBusStop_givenCompleteBusStop_returnsCompleteBusStopViewModel() {
+    // 1
+    val inputBusStop = BusStop(
+        "id",
+        "stopName",
+        GeoLocation(1.0, 2.0),
+        "direction",
+        "indicator",
+        123F
+    )
+    // 2
+    val expectedViewModel = BusStopViewModel(
+        "id",
+        "stopName",
+        "direction",
+        "indicator",
+        "123 m"
+    )
+    // 3
+    assertEquals(expectedViewModel, mapBusStop(inputBusStop))
   }
 
   @Test
