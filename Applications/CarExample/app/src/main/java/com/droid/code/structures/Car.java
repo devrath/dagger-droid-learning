@@ -1,8 +1,8 @@
 package com.droid.code.structures;
 
-import static com.droid.code.MainActivityKt.PROJECT_TAG;
-
 import android.util.Log;
+
+import static com.droid.code.Demo.PROJECT_TAG;
 
 import javax.inject.Inject;
 
