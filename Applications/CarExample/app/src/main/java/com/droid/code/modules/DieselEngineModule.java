@@ -4,15 +4,14 @@ package com.droid.code.modules;
 import com.droid.code.structures.engine.DieselEngine;
 import com.droid.code.structures.engine.Engine;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class DieselEngineModule {
+public abstract class DieselEngineModule {
 
-    @Provides
-    public Engine providesDieselEngine() {
-        return new DieselEngine();
-    }
+    @Binds
+    public abstract Engine providesDieselEngine(DieselEngine engine);
 
 }
