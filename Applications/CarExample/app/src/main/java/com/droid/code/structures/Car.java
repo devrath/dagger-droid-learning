@@ -22,6 +22,7 @@ public class Car {
 
     public void drive() {
         if(engine!=null && wheels!=null){
+            engine.start();
             Log.d(PROJECT_TAG, "Car with Engine:->"+engine+"-----"+"having the wheels"+wheels+"are running");
         }
     }

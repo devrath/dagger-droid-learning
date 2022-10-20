@@ -8,14 +8,17 @@ import javax.inject.Inject;
 
 public class DieselEngine implements Engine{
 
+    private int capacity;
+
     @Inject
-    public DieselEngine(){
+    public DieselEngine(int capacity){
+        this.capacity = capacity;
         Log.d(PROJECT_TAG, "Diesel engine initialised");
     }
 
     @Override
     public void start() {
-        Log.d(PROJECT_TAG, "Starting petrol engine");
+        Log.d(PROJECT_TAG, "Starting petrol engine with capacity :->"+capacity);
     }
 
 }

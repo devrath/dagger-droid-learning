@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.droid.code.components.CarComponent;
 import com.droid.code.components.DaggerCarComponent;
 import com.droid.code.databinding.ActivityMainBinding;
+import com.droid.code.modules.DieselEngineModule;
+import com.droid.code.modules.WheelsModule;
 import com.droid.code.structures.Car;
 
 import javax.inject.Inject;
@@ -30,7 +32,12 @@ public class Demo extends AppCompatActivity {
         // DaggerCarComponent.builder().build().inject(this);
 
         binding.btnInitiateId.setOnClickListener(v -> {
-            CarComponent component = DaggerCarComponent.create();
+           //CarComponent component = DaggerCarComponent.create();
+            //component.getCarInstance().drive();
+
+            CarComponent component = DaggerCarComponent.builder()
+                            .dieselEngineModule(new DieselEngineModule(50))
+                            .wheelsModule(new WheelsModule()).build();
             component.getCarInstance().drive();
         });
     }
