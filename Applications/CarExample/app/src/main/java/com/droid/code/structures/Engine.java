@@ -8,8 +8,7 @@ import javax.inject.Inject;
 
 public class Engine {
 
-    @Inject
-    Engine() {
+    public Engine() {
         Log.d(PROJECT_TAG, "Engine constructor is invoked");
     }
 

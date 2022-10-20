@@ -9,8 +9,7 @@ import javax.inject.Inject;
 
 public class Wheels {
 
-    @Inject
-    Wheels() {
+    public Wheels() {
         Log.d(PROJECT_TAG, "Wheels constructor is invoked");
     }
 
