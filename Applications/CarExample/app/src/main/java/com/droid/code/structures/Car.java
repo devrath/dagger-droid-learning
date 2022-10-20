@@ -4,6 +4,8 @@ import android.util.Log;
 
 import static com.droid.code.Demo.PROJECT_TAG;
 
+import com.droid.code.structures.engine.Engine;
+
 import javax.inject.Inject;
 
 public class Car {
