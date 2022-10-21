@@ -5,6 +5,7 @@ import android.util.Log;
 import static com.droid.code.Demo.PROJECT_TAG;
 
 import com.droid.code.structures.engine.Engine;
+import com.droid.code.structures.wheels.Wheels;
 
 import javax.inject.Inject;
 

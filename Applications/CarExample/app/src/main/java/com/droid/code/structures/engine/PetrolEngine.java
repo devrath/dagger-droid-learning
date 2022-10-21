@@ -10,12 +10,12 @@ public class PetrolEngine implements Engine {
 
     @Inject
     public PetrolEngine(){
-        Log.d(PROJECT_TAG, "Diesel engine initialised");
+        Log.d(PROJECT_TAG, "Petrol engine initialised");
     }
 
     @Override
     public void start() {
-        Log.d(PROJECT_TAG, "Starting diesel engine");
+        Log.d(PROJECT_TAG, "Starting petrol engine");
     }
 
 }

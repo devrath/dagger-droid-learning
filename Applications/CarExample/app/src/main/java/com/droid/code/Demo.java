@@ -20,25 +20,16 @@ public class Demo extends AppCompatActivity {
     public static final String PROJECT_TAG = "Vehicle_Demo";
     private ActivityMainBinding binding;
 
-    // @Inject Car car;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot());
 
-        // Field injection
-        // DaggerCarComponent.builder().build().inject(this);
 
         binding.btnInitiateId.setOnClickListener(v -> {
-           //CarComponent component = DaggerCarComponent.create();
-            //component.getCarInstance().drive();
-
-            CarComponent component = DaggerCarComponent.builder()
-                            .dieselEngineModule(new DieselEngineModule(50))
-                            .wheelsModule(new WheelsModule()).build();
-            component.getCarInstance().drive();
+            CarComponent comp = DaggerCarComponent.builder().build();
+            comp.getCarInstance().drive();
         });
     }
 

@@ -18,6 +18,11 @@ public class DieselEngineModule {
     }
 
     @Provides
+    int providesCapacity() {
+        return capacity;
+    }
+
+    @Provides
     public Engine providesDieselEngine(){
         return new DieselEngine(capacity);
     }
