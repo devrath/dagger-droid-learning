@@ -28,7 +28,11 @@ public class Demo extends AppCompatActivity {
 
 
         binding.btnInitiateId.setOnClickListener(v -> {
-            CarComponent comp = DaggerCarComponent.builder().build();
+            /*CarComponent comp = DaggerCarComponent.builder().build();
+            comp.getCarInstance().drive();*/
+
+            CarComponent comp = DaggerCarComponent.builder()
+                    .engineCapacity(10).horsePower(30).build();
             comp.getCarInstance().drive();
         });
     }

@@ -21,6 +21,13 @@ public interface CarComponent {
     // When we define component builder, We take responsibility of building the component
     @Component.Builder
     interface Builder {
+
+        @BindsInstance
+        Builder horsePower(@Named("horse power") int horsePower);
+
+        @BindsInstance
+        Builder engineCapacity(@Named("engine capacity") int engineCapacity);
+
         CarComponent build();
     }
 
