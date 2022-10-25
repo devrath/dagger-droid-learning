@@ -12,9 +12,12 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.raywenderlich.android.busso.di.GEO_PERMISSION_CHECKER
-import com.raywenderlich.android.busso.di.LOCATION_MANAGER
+import com.raywenderlich.android.busso.di.ACTIVITY_LOCATOR_FACTORY
 import com.raywenderlich.android.busso.di.LOCATION_OBSERVABLE
+import com.raywenderlich.android.busso.di.NAVIGATOR
+import com.raywenderlich.android.busso.di.ServiceLocator
+import com.raywenderlich.android.busso.di.ServiceLocatorFactory
+import com.raywenderlich.android.busso.di.SplashActivityInjector
 import com.raywenderlich.android.location.api.model.LocationEvent
 import com.raywenderlich.android.location.api.model.LocationPermissionGranted
 import com.raywenderlich.android.location.api.model.LocationPermissionRequest
@@ -42,15 +45,22 @@ class SplashActivity : AppCompatActivity() {
     private val handler = Handler()
     private val disposables = CompositeDisposable()
 
-    private lateinit var locationObservable: Observable<LocationEvent>
-    private lateinit var navigator: Navigator
+    lateinit var locationObservable: Observable<LocationEvent>
+    lateinit var navigator: Navigator
+    private lateinit var activityServiceLocator: ServiceLocator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         makeFullScreen()
         setContentView(R.layout.activity_splash)
-        locationObservable = lookUp(LOCATION_OBSERVABLE)
-        navigator = NavigatorImpl(this)
+        SplashActivityInjector.inject(this)
+        activityServiceLocator =
+            lookUp<ServiceLocatorFactory<AppCompatActivity>>(ACTIVITY_LOCATOR_FACTORY)
+                .invoke(this)
+        // Get the reference to Observable<LocationEvent>
+        locationObservable = activityServiceLocator.lookUp(LOCATION_OBSERVABLE)
+        // Obtain the instance of the Navigator implementation.
+        navigator = activityServiceLocator.lookUp(NAVIGATOR)
     }
 
     override fun onStart() {
