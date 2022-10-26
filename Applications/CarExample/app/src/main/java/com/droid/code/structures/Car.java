@@ -4,6 +4,9 @@ import android.util.Log;
 
 import static com.droid.code.Demo.PROJECT_TAG;
 
+import com.droid.code.structures.engine.Engine;
+import com.droid.code.structures.wheels.Wheels;
+
 import javax.inject.Inject;
 
 public class Car {
@@ -20,6 +23,7 @@ public class Car {
 
     public void drive() {
         if(engine!=null && wheels!=null){
+            engine.start();
             Log.d(PROJECT_TAG, "Car with Engine:->"+engine+"-----"+"having the wheels"+wheels+"are running");
         }
     }
