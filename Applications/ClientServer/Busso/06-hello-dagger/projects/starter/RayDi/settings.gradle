@@ -1,4 +1,0 @@
-rootProject.name = 'RayDi'
-include ':annotation'
-include ':processor'
-include ':app'
